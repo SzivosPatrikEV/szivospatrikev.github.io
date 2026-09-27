@@ -147,64 +147,135 @@
 
         <main>
 
-            <section class="hero">
-
-                <div class="hero-overlay"></div>
-
-                <div class="container hero-container">
-
-                    <div class="hero-content">
-
-                        <div class="hero-label">
-
-                            Pécsi Tudományegyetem
-
-                        </div>
-
-                        <h1>
-
-                            PTE Szent-Györgyi Albert
-
-                            <span>
-                                Egészségügyi Technikum
-                            </span>
-
-                        </h1>
-
-                        <p>
-
-                            Tudás, hivatás, jövő.
-                            Ismerd meg iskolánkat és
-                            képzéseinket!
-
-                        </p>
-
-                        <div class="hero-buttons">
-
-                            <a
-                                href="kepzesek.html"
-                                class="button button-primary">
-                                Képzéseink
-                            </a>
-
-                            <a
-                                href="iskolank/intezmenyunk.html"
-                                class="button button-secondary">
-                                Iskolánkról
-                            </a>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </section>
-
             <!-- =========================
      ISKOLÁNKRÓL
 ========================= -->
 
+<!-- =========================
+     FŐOLDALI SLIDER
+========================= -->
+
+<section class="hero-slider" aria-label="Bemutató képek">
+
+    <div class="slider" aria-roledescription="carousel" aria-label="Iskolai képgaléria">
+
+        <!-- 1. KÉP -->
+        <div class="slide active" aria-hidden="false">
+            <img src="images/slider1.jpg" >
+            
+            <div class="slide-overlay"></div>
+
+            <div class="slide-content container">
+                <span class="slide-label">
+                    Pécsi Tudományegyetem
+                </span>
+
+                <h1>
+                    PTE Szent-Györgyi Albert
+                    <span>Egészségügyi Technikum</span>
+                </h1>
+
+                <p>
+                    Tudás, hivatás, jövő.
+                </p>
+
+                <div class="hero-buttons">
+                    <a href="kepzesek.html" class="button button-primary">
+                        Képzéseink
+                    </a>
+
+                    <a href="iskolank/intezmenyunk.html" class="button button-secondary">
+                        Iskolánkról
+                    </a>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Osztályképek -->
+        <div class="slide" aria-hidden="true">
+            <img src="images/9.A.jpg" alt="9.A osztály" loading="lazy">
+            <div class="slide-overlay"></div>
+            <div class="slide-content container"><span class="slide-label">OSZTÁLYAINK</span><h2>9.A</h2></div>
+        </div>
+        <div class="slide" aria-hidden="true">
+            <img src="images/9.B.jpg" alt="9.B osztály" loading="lazy">
+            <div class="slide-overlay"></div>
+            <div class="slide-content container"><span class="slide-label">OSZTÁLYAINK</span><h2>9.B</h2></div>
+        </div>
+        <div class="slide" aria-hidden="true">
+            <img src="images/9.S.jpg" alt="9.S osztály" loading="lazy">
+            <div class="slide-overlay"></div>
+            <div class="slide-content container"><span class="slide-label">OSZTÁLYAINK</span><h2>9.S</h2></div>
+        </div>
+        <div class="slide" aria-hidden="true">
+            <img src="images/10.A.jpg" alt="10.A osztály" loading="lazy">
+            <div class="slide-overlay"></div>
+            <div class="slide-content container"><span class="slide-label">OSZTÁLYAINK</span><h2>10.A</h2></div>
+        </div>
+        <div class="slide" aria-hidden="true">
+            <img src="images/10.S.jpg" alt="10.S osztály" loading="lazy">
+            <div class="slide-overlay"></div>
+            <div class="slide-content container"><span class="slide-label">OSZTÁLYAINK</span><h2>10.S</h2></div>
+        </div>
+        <div class="slide" aria-hidden="true">
+            <img src="images/11.A.jpg" alt="11.A osztály" loading="lazy">
+            <div class="slide-overlay"></div>
+            <div class="slide-content container"><span class="slide-label">OSZTÁLYAINK</span><h2>11.A</h2></div>
+        </div>
+        <div class="slide" aria-hidden="true">
+            <img src="images/11.B.jpg" alt="11.B osztály" loading="lazy">
+            <div class="slide-overlay"></div>
+            <div class="slide-content container"><span class="slide-label">OSZTÁLYAINK</span><h2>11.B</h2></div>
+        </div>
+        <div class="slide" aria-hidden="true">
+            <img src="images/12.A.jpg" alt="12.A osztály" loading="lazy">
+            <div class="slide-overlay"></div>
+            <div class="slide-content container"><span class="slide-label">OSZTÁLYAINK</span><h2>12.A</h2></div>
+        </div>
+        <div class="slide" aria-hidden="true">
+            <img src="images/12.B.jpg" alt="12.B osztály" loading="lazy">
+            <div class="slide-overlay"></div>
+            <div class="slide-content container"><span class="slide-label">OSZTÁLYAINK</span><h2>12.B</h2></div>
+        </div>
+        <div class="slide" aria-hidden="true">
+            <img src="images/13.C.jpg" alt="13.C osztály" loading="lazy">
+            <div class="slide-overlay"></div>
+            <div class="slide-content container"><span class="slide-label">OSZTÁLYAINK</span><h2>13.C</h2></div>
+        </div>
+
+
+        <!-- NYILAK -->
+        <button class="slider-arrow slider-prev" type="button" aria-label="Előző kép">
+            ‹
+        </button>
+
+        <button class="slider-arrow slider-next" type="button" aria-label="Következő kép">
+            ›
+        </button>
+
+
+        <!-- PONTOK -->
+        <div class="slider-dots" aria-label="Ugrás egy képre">
+
+            <button class="slider-dot active" type="button" aria-label="1. kép"></button>
+
+            <button class="slider-dot" type="button" aria-label="2. kép: 9.A"></button>
+            <button class="slider-dot" type="button" aria-label="3. kép: 9.B"></button>
+            <button class="slider-dot" type="button" aria-label="4. kép: 9.S"></button>
+            <button class="slider-dot" type="button" aria-label="5. kép: 10.A"></button>
+            <button class="slider-dot" type="button" aria-label="7. kép: 10.S"></button>
+            <button class="slider-dot" type="button" aria-label="8. kép: 11.A"></button>
+            <button class="slider-dot" type="button" aria-label="9. kép: 11.B"></button>
+            <button class="slider-dot" type="button" aria-label="10. kép: 12.A"></button>
+            <button class="slider-dot" type="button" aria-label="11. kép: 12.B"></button>
+            <button class="slider-dot" type="button" aria-label="12. kép: 13.C"></button>
+
+        </div>
+
+    </div>
+
+</section>
             <section class="about">
 
                 <div class="container">
@@ -582,7 +653,7 @@
                     <div class="document-list">
 
                         <a
-                            href="dokumentumok.html"
+                            href=""
                             class="document-item">
 
                             <div class="document-icon">
@@ -708,7 +779,7 @@
                                     </strong>
 
                                     <p>
-                                        Pécs
+                                        9700 Szombathely, Jókai Mór u. 14.
                                     </p>
 
                                 </div>
@@ -728,7 +799,7 @@
                                     </strong>
 
                                     <p>
-                                        +36 XX XXX XXXX
+                                        +36 94/311-170 / 145-ös mellék
                                     </p>
 
                                 </div>
@@ -748,7 +819,7 @@
                                     </strong>
 
                                     <p>
-                                        iskola@example.hu
+                                        szentgyorgyi.szombathely@pte.hu
                                     </p>
 
                                 </div>
@@ -795,7 +866,7 @@
                         Impresszum
                     </a>
 
-                    <a href="kapcsolat.html">
+                    <a href="iskolank/intezmenyunk.html">
                         Kapcsolat
                     </a>
 

@@ -37,6 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
+    
 
     /* =========================
        ISKOLÁNK DROPDOWN
@@ -243,5 +244,75 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     );
 
-});
+    /* =========================
+       AUTOMATIKUS KÉPSLIDER
+    ========================= */
 
+    const slider = document.querySelector(".slider");
+
+    if (slider) {
+        const slides = Array.from(slider.querySelectorAll(".slide"));
+        const dots = Array.from(slider.querySelectorAll(".slider-dot"));
+        const previousButton = slider.querySelector(".slider-prev");
+        const nextButton = slider.querySelector(".slider-next");
+        const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+        let currentIndex = slides.findIndex((slide) => slide.classList.contains("active"));
+        let timer;
+
+        const showSlide = (index) => {
+            currentIndex = (index + slides.length) % slides.length;
+
+            slides.forEach((slide, slideIndex) => {
+                const isActive = slideIndex === currentIndex;
+                slide.classList.toggle("active", isActive);
+                slide.setAttribute("aria-hidden", String(!isActive));
+            });
+
+            dots.forEach((dot, dotIndex) => {
+                const isActive = dotIndex === currentIndex;
+                dot.classList.toggle("active", isActive);
+                dot.setAttribute("aria-current", isActive ? "true" : "false");
+            });
+        };
+
+        const stopTimer = () => window.clearInterval(timer);
+        const startTimer = () => {
+            stopTimer();
+            if (!reducedMotion.matches && slides.length > 1) {
+                timer = window.setInterval(() => showSlide(currentIndex + 1), 5500);
+            }
+        };
+
+        if (slides.length) {
+            showSlide(currentIndex < 0 ? 0 : currentIndex);
+            startTimer();
+
+            previousButton?.addEventListener("click", () => {
+                showSlide(currentIndex - 1);
+                startTimer();
+            });
+
+            nextButton?.addEventListener("click", () => {
+                showSlide(currentIndex + 1);
+                startTimer();
+            });
+
+            dots.forEach((dot, index) => {
+                dot.addEventListener("click", () => {
+                    showSlide(index);
+                    startTimer();
+                });
+            });
+
+            slider.addEventListener("mouseenter", stopTimer);
+            slider.addEventListener("mouseleave", startTimer);
+            slider.addEventListener("focusin", stopTimer);
+            slider.addEventListener("focusout", (event) => {
+                if (!slider.contains(event.relatedTarget)) startTimer();
+            });
+
+            reducedMotion.addEventListener?.("change", startTimer);
+        }
+    }
+
+});
