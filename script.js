@@ -11,14 +11,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const navigation =
         document.getElementById("navigation");
 
-    const schoolMenuButton =
-        document.getElementById("schoolMenuButton");
-
-    const schoolDropdown =
-        document.getElementById("schoolDropdown");
-
-    const navDropdown =
-        document.querySelector(".nav-dropdown");
+    const dropdownButtons = Array.from(
+        document.querySelectorAll(".nav-dropdown-button")
+    );
 
 
     /* =========================
@@ -32,6 +27,10 @@ document.addEventListener("DOMContentLoaded", () => {
             event.stopPropagation();
 
             navigation.classList.toggle("active");
+            menuButton.setAttribute(
+                "aria-expanded",
+                String(navigation.classList.contains("active"))
+            );
 
         });
 
@@ -40,53 +39,33 @@ document.addEventListener("DOMContentLoaded", () => {
     
 
     /* =========================
-       ISKOLÁNK DROPDOWN
+       NAVIGATION DROPDOWNS
     ========================= */
 
-    if (
-        schoolMenuButton &&
-        schoolDropdown &&
-        navDropdown
-    ) {
+    dropdownButtons.forEach((button) => {
+        button.addEventListener("click", (event) => {
+            event.stopPropagation();
+            const dropdown = button.closest(".nav-dropdown");
+            const shouldOpen = !dropdown.classList.contains("open");
 
-        schoolMenuButton.addEventListener(
-            "click",
-            (event) => {
+            document.querySelectorAll(".nav-dropdown.open").forEach((item) => {
+                item.classList.remove("open");
+                item.querySelector(".nav-dropdown-button")?.setAttribute("aria-expanded", "false");
+            });
 
-                event.stopPropagation();
-
-                navDropdown.classList.toggle("open");
-
-                const isOpen =
-                    navDropdown.classList.contains("open");
-
-                schoolMenuButton.setAttribute(
-                    "aria-expanded",
-                    isOpen ? "true" : "false"
-                );
-
-            }
-        );
-
-    }
+            dropdown.classList.toggle("open", shouldOpen);
+            button.setAttribute("aria-expanded", String(shouldOpen));
+        });
+    });
 
 
     /* =========================
        DROPDOWNON BELÜLI KATTINTÁS
     ========================= */
 
-    if (schoolDropdown) {
-
-        schoolDropdown.addEventListener(
-            "click",
-            (event) => {
-
-                event.stopPropagation();
-
-            }
-        );
-
-    }
+    document.querySelectorAll(".dropdown-menu").forEach((dropdown) => {
+        dropdown.addEventListener("click", (event) => event.stopPropagation());
+    });
 
 
     /* =========================
@@ -97,23 +76,12 @@ document.addEventListener("DOMContentLoaded", () => {
         "click",
         (event) => {
 
-            if (
-                navDropdown &&
-                !navDropdown.contains(event.target)
-            ) {
-
-                navDropdown.classList.remove("open");
-
-                if (schoolMenuButton) {
-
-                    schoolMenuButton.setAttribute(
-                        "aria-expanded",
-                        "false"
-                    );
-
+            document.querySelectorAll(".nav-dropdown.open").forEach((dropdown) => {
+                if (!dropdown.contains(event.target)) {
+                    dropdown.classList.remove("open");
+                    dropdown.querySelector(".nav-dropdown-button")?.setAttribute("aria-expanded", "false");
                 }
-
-            }
+            });
 
 
             if (
@@ -124,6 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
             ) {
 
                 navigation.classList.remove("active");
+                menuButton.setAttribute("aria-expanded", "false");
 
             }
 
@@ -147,26 +116,16 @@ document.addEventListener("DOMContentLoaded", () => {
             "click",
             () => {
 
-                if (navDropdown) {
-
-                    navDropdown.classList.remove("open");
-
-                }
+                link.closest(".nav-dropdown")?.classList.remove("open");
 
                 if (navigation) {
 
                     navigation.classList.remove("active");
 
                 }
+                menuButton?.setAttribute("aria-expanded", "false");
 
-                if (schoolMenuButton) {
-
-                    schoolMenuButton.setAttribute(
-                        "aria-expanded",
-                        "false"
-                    );
-
-                }
+                link.closest(".nav-dropdown")?.querySelector(".nav-dropdown-button")?.setAttribute("aria-expanded", "false");
 
             }
         );
@@ -195,12 +154,9 @@ document.addEventListener("DOMContentLoaded", () => {
                     navigation.classList.remove("active");
 
                 }
+                menuButton?.setAttribute("aria-expanded", "false");
 
-                if (navDropdown) {
-
-                    navDropdown.classList.remove("open");
-
-                }
+                document.querySelectorAll(".nav-dropdown.open").forEach((dropdown) => dropdown.classList.remove("open"));
 
             }
         );
@@ -218,11 +174,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             if (event.key === "Escape") {
 
-                if (navDropdown) {
-
-                    navDropdown.classList.remove("open");
-
-                }
+                document.querySelectorAll(".nav-dropdown.open").forEach((dropdown) => dropdown.classList.remove("open"));
 
                 if (navigation) {
 
@@ -230,14 +182,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 }
 
-                if (schoolMenuButton) {
+                menuButton?.setAttribute("aria-expanded", "false");
 
-                    schoolMenuButton.setAttribute(
-                        "aria-expanded",
-                        "false"
-                    );
-
-                }
+                dropdownButtons.forEach((button) => button.setAttribute("aria-expanded", "false"));
 
             }
 

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f4f8fc">
+    <title>Galéria adminisztráció | PTE Szent-Györgyi Albert Technikum</title>
+    <link rel="stylesheet" href="media.css">
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body class="media-page admin-page">
+    <main class="admin-shell">
+        <a class="admin-back" href="media.html">← Vissza a képgalériához</a>
+        <header class="admin-heading">
+            <span class="media-kicker">PTE · SZENT-GYÖRGYI ALBERT TECHNIKUM</span>
+            <h1>Galéria adminisztráció</h1>
+            <p>Jelentkezz be GitHub hozzáféréssel az albumok és képek kezeléséhez.</p>
+        </header>
+
+        <section class="admin-panel" id="loginPanel">
+            <div class="admin-panel-title"><span class="admin-icon">⌑</span><div><h2>Admin belépés</h2><p>GitHub személyes hozzáférési token szükséges.</p></div></div>
+            <form id="loginForm">
+                <label for="githubToken">GitHub token</label>
+                <input id="githubToken" type="password" autocomplete="off" spellcheck="false" placeholder="github_pat_…" required>
+                <button class="media-button" type="submit" id="loginButton">Belépés</button>
+            </form>
+            <p class="admin-help">Fine-grained token létrehozásakor csak a <strong>pteszgy-new</strong> repositoryt válaszd ki, és adj <strong>Contents: Read and write</strong> jogosultságot. Állíts be lejárati időt. A token csak ebben a böngészőlapban marad, kilépéskor törlődik. <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener noreferrer">Token létrehozása a GitHubon ↗</a></p>
+        </section>
+
+        <section class="admin-panel admin-tools" id="adminTools" hidden>
+            <div class="admin-session"><div><span class="admin-online"></span><strong id="signedInAs">Bejelentkezve</strong><p>A változtatások a GitHub repositoryba kerülnek.</p></div><button class="media-button media-button-light" id="logoutButton" type="button">Kilépés</button></div>
+            <div class="admin-divider"></div>
+            <form id="createAlbumForm" class="admin-form-row">
+                <label for="albumName">Új album létrehozása</label>
+                <div><input id="albumName" maxlength="60" placeholder="Album neve" required><button class="media-button" type="submit">＋ Album létrehozása</button></div>
+            </form>
+            <div class="admin-divider"></div>
+            <form id="uploadForm" class="admin-form-row">
+                <label for="albumSelect">Képek feltöltése</label>
+                <div class="upload-fields"><select id="albumSelect" required></select><input id="adminPhotos" type="file" accept="image/*" multiple required><button class="media-button" type="submit" id="uploadButton">Képek feltöltése</button></div>
+                <p class="admin-help">Képenként legfeljebb 8 MB. A képek nyilvános weboldal-repositoryba kerülnek, ezért csak közzétehető fotókat tölts fel.</p>
+            </form>
+        </section>
+
+        <p class="admin-status" id="adminStatus" role="status" aria-live="polite"></p>
+        <p class="admin-footer-note">Az adminisztráció a GitHub jogosultságoddal védett. A weboldal nem tárolja a tokenedet.</p>
+    </main>
+    <script src="admin.js"></script>
+</body>
+</html>

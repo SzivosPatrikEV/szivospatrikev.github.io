@@ -1,112 +1,60 @@
-
-/* =========================================================
-   PTE SZENT-GYÖRGYI
-   KÖZÖS HEADER JAVASCRIPT
-========================================================= */
-
-document.addEventListener("DOMContentLoaded", function () {
-
+document.addEventListener("DOMContentLoaded", () => {
     const menuButton = document.getElementById("siteMenuButton");
     const navigation = document.getElementById("siteNavigation");
+    const dropdownButtons = Array.from(
+        document.querySelectorAll(".site-nav-dropdown-button")
+    );
 
-    const schoolMenuButton =
-        document.getElementById("schoolMenuButton");
-
-    const schoolDropdown =
-        document.getElementById("schoolDropdown");
-
-    const navDropdown =
-        document.querySelector(".site-nav-dropdown");
-
-
-    /* MOBIL MENÜ */
-
-    if (menuButton && navigation) {
-
-        menuButton.addEventListener("click", function () {
-
-            navigation.classList.toggle("active");
-
-        });
-
-    }
-
-
-    /* ISKOLÁNK DROPDOWN */
-
-    if (
-        schoolMenuButton &&
-        schoolDropdown &&
-        navDropdown
-    ) {
-
-        schoolMenuButton.addEventListener("click", function (event) {
-
-            event.stopPropagation();
-
-            navDropdown.classList.toggle("open");
-
-            schoolMenuButton.setAttribute(
-                "aria-expanded",
-                navDropdown.classList.contains("open")
-            );
-
-        });
-
-    }
-
-
-    /* DROPDOWN BEZÁRÁSA KÍVÜLRE KATTINTÁSKOR */
-
-    document.addEventListener("click", function (event) {
-
-        if (
-            navDropdown &&
-            !navDropdown.contains(event.target)
-        ) {
-
-            navDropdown.classList.remove("open");
-
-            if (schoolMenuButton) {
-                schoolMenuButton.setAttribute(
-                    "aria-expanded",
-                    "false"
-                );
-            }
-
-        }
-
+    menuButton?.addEventListener("click", (event) => {
+        event.stopPropagation();
+        navigation?.classList.toggle("active");
+        menuButton.setAttribute("aria-expanded", String(navigation?.classList.contains("active")));
     });
 
+    dropdownButtons.forEach((button) => {
+        button.addEventListener("click", (event) => {
+            event.stopPropagation();
+            const dropdown = button.closest(".site-nav-dropdown");
+            const shouldOpen = !dropdown.classList.contains("open");
 
-    /* NAVIGÁCIÓS LINK */
-
-    if (navigation) {
-
-        const links =
-            navigation.querySelectorAll("a");
-
-        links.forEach(function (link) {
-
-            link.addEventListener("click", function () {
-
-                navigation.classList.remove("active");
-
-                if (navDropdown) {
-                    navDropdown.classList.remove("open");
-                }
-
-                if (schoolMenuButton) {
-                    schoolMenuButton.setAttribute(
-                        "aria-expanded",
-                        "false"
-                    );
-                }
-
+            document.querySelectorAll(".site-nav-dropdown.open").forEach((item) => {
+                item.classList.remove("open");
+                item.querySelector(".site-nav-dropdown-button")?.setAttribute("aria-expanded", "false");
             });
 
+            dropdown.classList.toggle("open", shouldOpen);
+            button.setAttribute("aria-expanded", String(shouldOpen));
+        });
+    });
+
+    document.addEventListener("click", (event) => {
+        document.querySelectorAll(".site-nav-dropdown.open").forEach((dropdown) => {
+            if (!dropdown.contains(event.target)) {
+                dropdown.classList.remove("open");
+                dropdown.querySelector(".site-nav-dropdown-button")?.setAttribute("aria-expanded", "false");
+            }
         });
 
-    }
+        if (navigation && menuButton && !navigation.contains(event.target) && !menuButton.contains(event.target)) {
+            navigation.classList.remove("active");
+            menuButton.setAttribute("aria-expanded", "false");
+        }
+    });
 
+    navigation?.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+            navigation.classList.remove("active");
+            menuButton?.setAttribute("aria-expanded", "false");
+            link.closest(".site-nav-dropdown")?.classList.remove("open");
+            link.closest(".site-nav-dropdown")?.querySelector(".site-nav-dropdown-button")?.setAttribute("aria-expanded", "false");
+        });
+    });
+
+    document.addEventListener("keydown", (event) => {
+        if (event.key !== "Escape") return;
+        document.querySelectorAll(".site-nav-dropdown.open").forEach((dropdown) => dropdown.classList.remove("open"));
+        dropdownButtons.forEach((button) => button.setAttribute("aria-expanded", "false"));
+        navigation?.classList.remove("active");
+        menuButton?.setAttribute("aria-expanded", "false");
+    });
 });

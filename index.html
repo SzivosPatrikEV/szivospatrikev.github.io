@@ -49,7 +49,8 @@
                             class="nav-dropdown-button"
                             id="schoolMenuButton"
                             type="button"
-                            aria-expanded="false">
+                            aria-expanded="false"
+                            aria-controls="schoolDropdown">
 
                             Iskolánk
 
@@ -97,23 +98,47 @@
                                 Csengetési rend
                             </a>
 
+                            <a href="szakkepzes/szakmai_vizsga.html">
+                                <span>08</span>
+                                Képzések
+                            </a>
+
+                            <a href="media/media.html">
+                                <span>09</span>
+                                Képek
+                            </a>
+
                             
 
                         </div>
 
                     </div>
 
+                    <!-- KÉPZÉSEK -->
+                    <div class="nav-dropdown">
+                        <button
+                            class="nav-dropdown-button"
+                            id="coursesMenuButton"
+                            type="button"
+                            aria-expanded="false"
+                            aria-controls="coursesDropdown">
+                            Képzések
+                            <span class="dropdown-arrow">▾</span>
+                        </button>
+                        <div class="dropdown-menu" id="coursesDropdown">
+                            <a href="szakkepzes/szakmai_vizsga.html"><span>01</span>Szakmai vizsgák</a>
+                            <a href="szakkepzes/dokumentumok.html"><span>02</span>Képzési dokumentumok</a>
+                        </div>
+                    </div>
+
                     <!-- TÖBBI MENÜ -->
-                    <a href="kepzesek.html">
-                        Képzések
-                    </a>
 
                     <a href="felveteli.html">
                         Felvételi
                     </a>
 
-                    <a href="hirek.html">
-                        Hírek
+                    <a href="media/media.html">
+                        Képek
                     </a>
 
                     <a href="dokumentumok.html">
@@ -180,7 +205,7 @@
                 </p>
 
                 <div class="hero-buttons">
-                    <a href="kepzesek.html" class="button button-primary">
+                    <a href="szakkepzes/szakmai_vizsga.html" class="button button-primary">
                         Képzéseink
                     </a>
 
@@ -403,7 +428,7 @@
                                 technikumi és szakmai képzések.
                             </p>
 
-                            <a href="kepzesek.html">
+                            <a href="szakkepzes/szakmai_vizsga.html">
                                 További információ →
                             </a>
 
@@ -424,7 +449,7 @@
                                 biztosító képzési lehetőségek.
                             </p>
 
-                            <a href="kepzesek.html">
+                            <a href="szakkepzes/szakmai_vizsga.html">
                                 További információ →
                             </a>
 
@@ -445,7 +470,7 @@
                                 kapcsolatos lehetőségek.
                             </p>
 
-                            <a href="kepzesek.html">
+                            <a href="szakkepzes/szakmai_vizsga.html">
                                 További információ →
                             </a>
 
@@ -458,7 +483,7 @@
             </section>
 
             <!-- =========================
-     HÍREK
+     KÉPGALÉRIÁK
 ========================= -->
 
             <section class="news">
@@ -470,19 +495,19 @@
                         <div class="section-heading">
 
                             <span>
-                                LEGFRISSEBB
+                                GALÉRIA
                             </span>
 
                             <h2>
-                                Hírek és események
+                                Képgalériák
                             </h2>
 
                         </div>
 
                         <a
-                            href="hirek.html"
+                            href="media/media.html"
                             class="view-all">
-                            Összes hír →
+                            Összes album →
                         </a>
 
                     </div>
@@ -491,10 +516,10 @@
 
                         <article class="news-card">
 
-                            <div class="news-image">
+                            <div class="news-image" style="background: linear-gradient(0deg, rgba(8, 28, 50, .22), rgba(8, 28, 50, .02)), url('images/9.A.jpg') center 42% / cover;">
 
                                 <span>
-                                    HÍR
+                                    OSZTÁLYAINK
                                 </span>
 
                             </div>
@@ -502,20 +527,19 @@
                             <div class="news-content">
 
                                 <time>
-                                    2026. szeptember 26.
+                                    10 OSZTÁLYALBUM
                                 </time>
 
                                 <h3>
-                                    Iskolai hírek és aktualitások
+                                    Osztályképek
                                 </h3>
 
                                 <p>
-                                    Tájékoztatás az iskola
-                                    legfontosabb eseményeiről.
+                                    Nézd meg diákjaink osztályfotóit és közös emlékeit.
                                 </p>
 
-                                <a href="hirek.html">
-                                    Elolvasom →
+                                <a href="media/media.html">
+                                    Album megnyitása →
                                 </a>
 
                             </div>
@@ -524,10 +548,10 @@
 
                         <article class="news-card">
 
-                            <div class="news-image">
+                            <div class="news-image" style="background: linear-gradient(0deg, rgba(8, 28, 50, .22), rgba(8, 28, 50, .02)), url('images/11.A.jpg') center 42% / cover;">
 
                                 <span>
-                                    ESEMÉNY
+                                    ISKOLAI ÉLET
                                 </span>
 
                             </div>
@@ -535,20 +559,19 @@
                             <div class="news-content">
 
                                 <time>
-                                    2026. szeptember 24.
+                                    FOTÓALBUM
                                 </time>
 
                                 <h3>
-                                    Közelgő iskolai programok
+                                    Iskolai események
                                 </h3>
 
                                 <p>
-                                    Nézd meg az előttünk álló
-                                    eseményeket és programokat.
+                                    Pillanatok az iskolai programokról és közös eseményekről.
                                 </p>
 
-                                <a href="hirek.html">
-                                    Elolvasom →
+                                <a href="media/media.html">
+                                    Album megnyitása →
                                 </a>
 
                             </div>
@@ -557,10 +580,10 @@
 
                         <article class="news-card">
 
-                            <div class="news-image">
+                            <div class="news-image" style="background: linear-gradient(0deg, rgba(8, 28, 50, .22), rgba(8, 28, 50, .02)), url('images/12.A.jpg') center 42% / cover;">
 
                                 <span>
-                                    ISKOLA
+                                    EMLÉKEK
                                 </span>
 
                             </div>
@@ -568,20 +591,19 @@
                             <div class="news-content">
 
                                 <time>
-                                    2026. szeptember 20.
+                                    FOTÓALBUM
                                 </time>
 
                                 <h3>
-                                    Információk tanulóink számára
+                                    Versenyek
                                 </h3>
 
                                 <p>
-                                    Fontos információk és
-                                    aktuális tájékoztatások.
+                                    Büszkeségeink és élményeink tanulmányi, illetve sportversenyekről.
                                 </p>
 
-                                <a href="hirek.html">
-                                    Elolvasom →
+                                <a href="media/media.html">
+                                    Album megnyitása →
                                 </a>
 
                             </div>

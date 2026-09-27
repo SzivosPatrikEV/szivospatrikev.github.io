@@ -1,0 +1,22 @@
+{
+  "albums": [
+    {
+      "id": "school-classes",
+      "name": "Osztályképek",
+      "photos": [
+        { "name": "9.A.jpg", "src": "../images/9.A.jpg" },
+        { "name": "9.B.jpg", "src": "../images/9.B.jpg" },
+        { "name": "9.S.jpg", "src": "../images/9.S.jpg" },
+        { "name": "10.A.jpg", "src": "../images/10.A.jpg" },
+        { "name": "10.S.jpg", "src": "../images/10.S.jpg" },
+        { "name": "11.A.jpg", "src": "../images/11.A.jpg" },
+        { "name": "11.B.jpg", "src": "../images/11.B.jpg" },
+        { "name": "12.A.jpg", "src": "../images/12.A.jpg" },
+        { "name": "12.B.jpg", "src": "../images/12.B.jpg" },
+        { "name": "13.C.jpg", "src": "../images/13.C.jpg" }
+      ]
+    },
+    { "id": "school-events", "name": "Iskolai események", "photos": [] },
+    { "id": "school-competitions", "name": "Versenyek", "photos": [] }
+  ]
+}
