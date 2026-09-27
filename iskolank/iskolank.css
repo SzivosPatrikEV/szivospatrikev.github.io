@@ -1,0 +1,610 @@
+
+/* =========================================================
+   PTE SZENT-GYÖRGYI
+   KÖZÖS HEADER / NAVIGÁCIÓ
+========================================================= */
+
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.96);
+    border-bottom: 1px solid #e6edf5;
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+}
+
+.site-header,
+.site-header * {
+    box-sizing: border-box;
+}
+
+.site-header-inner {
+    width: min(calc(100% - 48px), 1280px);
+    min-height: 78px;
+    margin: 0 auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 40px;
+}
+
+
+/* =========================================================
+   LOGÓ
+========================================================= */
+
+.site-logo {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+
+    color: #0f172a;
+    text-decoration: none;
+
+    flex-shrink: 0;
+}
+
+.site-logo-mark {
+    width: 46px;
+    height: 46px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 13px;
+
+    background: linear-gradient(
+        135deg,
+        #0067b9,
+        #004b91
+    );
+
+    color: #ffffff;
+
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: .5px;
+
+    box-shadow:
+        0 7px 18px rgba(0, 91, 170, .20);
+}
+
+.site-logo-text {
+    display: flex;
+    flex-direction: column;
+
+    line-height: 1.15;
+}
+
+.site-logo-text strong {
+    color: #0f172a;
+
+    font-size: 14px;
+    font-weight: 750;
+    letter-spacing: -.15px;
+}
+
+.site-logo-text small {
+    margin-top: 4px;
+
+    color: #64748b;
+
+    font-size: 10.5px;
+    font-weight: 500;
+}
+
+
+/* =========================================================
+   FŐ NAVIGÁCIÓ
+========================================================= */
+
+.site-navigation {
+    display: flex;
+    align-items: center;
+
+    gap: 6px;
+}
+
+.site-navigation > a,
+.site-nav-dropdown-button {
+    position: relative;
+
+    display: inline-flex;
+    align-items: center;
+
+    min-height: 42px;
+    padding: 0 13px;
+
+    border: none;
+    border-radius: 10px;
+
+    background: transparent;
+
+    color: #334155;
+
+    font-family: inherit;
+    font-size: 13.5px;
+    font-weight: 650;
+
+    text-decoration: none;
+
+    cursor: pointer;
+
+    transition:
+        color .2s ease,
+        background-color .2s ease;
+}
+
+.site-navigation > a:hover,
+.site-nav-dropdown-button:hover {
+    background: #f1f7fd;
+    color: #005baa;
+}
+
+
+/* =========================================================
+   AKTÍV / HOVER ALSÓ VONAL
+========================================================= */
+
+.site-navigation > a::after,
+.site-nav-dropdown-button::after {
+    content: "";
+
+    position: absolute;
+
+    left: 13px;
+    right: 13px;
+    bottom: 5px;
+
+    height: 2px;
+
+    border-radius: 999px;
+
+    background: #005baa;
+
+    transform: scaleX(0);
+    transform-origin: center;
+
+    transition: transform .2s ease;
+}
+
+.site-navigation > a:hover::after,
+.site-nav-dropdown-button:hover::after {
+    transform: scaleX(1);
+}
+
+
+/* =========================================================
+   ISKOLÁNK DROPDOWN
+========================================================= */
+
+.site-nav-dropdown {
+    position: relative;
+}
+
+.site-nav-dropdown-button {
+    gap: 7px;
+}
+
+.site-dropdown-arrow {
+    display: inline-block;
+
+    color: #64748b;
+
+    font-size: 11px;
+
+    transition:
+        transform .25s ease,
+        color .2s ease;
+}
+
+.site-nav-dropdown.open .site-dropdown-arrow {
+    transform: rotate(180deg);
+    color: #005baa;
+}
+
+.site-nav-dropdown.open .site-nav-dropdown-button {
+    background: #f1f7fd;
+    color: #005baa;
+}
+
+
+/* =========================================================
+   DROPDOWN MENÜ
+========================================================= */
+
+.site-dropdown-menu {
+    position: absolute;
+
+    top: calc(100% + 14px);
+    left: 50%;
+
+    width: 300px;
+
+    padding: 8px;
+
+    transform:
+        translateX(-50%)
+        translateY(-8px);
+
+    background: rgba(255, 255, 255, .98);
+
+    border: 1px solid #e2eaf3;
+    border-radius: 16px;
+
+    box-shadow:
+        0 18px 50px rgba(15, 23, 42, .13),
+        0 4px 12px rgba(15, 23, 42, .05);
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transition:
+        opacity .2s ease,
+        transform .2s ease,
+        visibility .2s ease;
+}
+
+.site-nav-dropdown.open .site-dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+
+    transform:
+        translateX(-50%)
+        translateY(0);
+}
+
+
+/* =========================================================
+   DROPDOWN LINK
+========================================================= */
+
+.site-dropdown-menu a {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    width: 100%;
+
+    padding: 11px 12px;
+
+    border-radius: 11px;
+
+    color: #334155;
+
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+
+    text-decoration: none;
+
+    transition:
+        background-color .2s ease,
+        color .2s ease,
+        transform .2s ease;
+}
+
+.site-dropdown-menu a:hover {
+    background: #f1f7fd;
+    color: #005baa;
+
+    transform: translateX(3px);
+}
+
+
+/* =========================================================
+   DROPDOWN SZÁMOK
+========================================================= */
+
+.site-dropdown-menu a span {
+    width: 30px;
+    height: 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 9px;
+
+    background: #eaf4fc;
+    color: #005baa;
+
+    font-size: 10px;
+    font-weight: 800;
+
+    transition:
+        background-color .2s ease,
+        color .2s ease;
+}
+
+.site-dropdown-menu a:hover span {
+    background: #005baa;
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   MOBIL MENÜ GOMB
+========================================================= */
+
+.site-menu-button {
+    display: none;
+
+    width: 44px;
+    height: 44px;
+
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid #e2e8f0;
+    border-radius: 11px;
+
+    background: #ffffff;
+    color: #334155;
+
+    cursor: pointer;
+
+    font-size: 22px;
+    line-height: 1;
+
+    transition:
+        background-color .2s ease,
+        color .2s ease,
+        border-color .2s ease,
+        transform .2s ease;
+}
+
+.site-menu-button:hover {
+    background: #f1f7fd;
+    border-color: #c9dff2;
+    color: #005baa;
+}
+
+.site-menu-button:active {
+    transform: scale(.95);
+}
+
+
+/* =========================================================
+   TABLET / MOBIL
+========================================================= */
+
+@media (max-width: 1000px) {
+
+    .site-header-inner {
+        min-height: 74px;
+        width: min(calc(100% - 32px), 1280px);
+    }
+
+    .site-menu-button {
+        display: flex;
+    }
+
+
+    /* -----------------------------------------
+       MOBIL NAVIGÁCIÓ
+    ----------------------------------------- */
+
+    .site-navigation {
+        display: none;
+
+        position: absolute;
+
+        top: 74px;
+        left: 0;
+        right: 0;
+
+        padding: 12px 16px 18px;
+
+        flex-direction: column;
+        align-items: stretch;
+
+        gap: 3px;
+
+        background: rgba(255, 255, 255, .99);
+
+        border-bottom: 1px solid #e2e8f0;
+
+        box-shadow:
+            0 18px 35px rgba(15, 23, 42, .10);
+    }
+
+    .site-navigation.active {
+        display: flex;
+    }
+
+
+    /* -----------------------------------------
+       MOBIL MENÜPONTOK
+    ----------------------------------------- */
+
+    .site-navigation > a {
+        width: 100%;
+
+        min-height: 46px;
+
+        justify-content: flex-start;
+
+        padding: 0 13px;
+
+        border-radius: 10px;
+
+        font-size: 14px;
+    }
+
+    .site-navigation > a::after {
+        display: none;
+    }
+
+    .site-navigation > a:hover {
+        background: #f1f7fd;
+    }
+
+
+    /* -----------------------------------------
+       MOBIL ISKOLÁNK
+    ----------------------------------------- */
+
+    .site-nav-dropdown {
+        width: 100%;
+    }
+
+    .site-nav-dropdown-button {
+        width: 100%;
+
+        min-height: 46px;
+
+        justify-content: space-between;
+
+        padding: 0 13px;
+
+        font-size: 14px;
+    }
+
+    .site-nav-dropdown-button::after {
+        display: none;
+    }
+
+
+    /* -----------------------------------------
+       MOBIL DROPDOWN
+    ----------------------------------------- */
+
+    .site-dropdown-menu {
+        position: static;
+
+        width: 100%;
+
+        max-height: 0;
+
+        overflow: hidden;
+
+        padding: 0;
+
+        border: 0;
+        border-radius: 0;
+
+        background: transparent;
+
+        box-shadow: none;
+
+        opacity: 1;
+        visibility: visible;
+        pointer-events: none;
+
+        transform: none;
+
+        transition:
+            max-height .3s ease,
+            padding .3s ease;
+    }
+
+    .site-nav-dropdown.open .site-dropdown-menu {
+        max-height: 500px;
+
+        padding: 5px 0 8px;
+
+        pointer-events: auto;
+
+        transform: none;
+    }
+
+
+    .site-dropdown-menu a {
+        min-height: 42px;
+
+        padding: 7px 13px 7px 24px;
+
+        font-size: 13.5px;
+    }
+
+    .site-dropdown-menu a:hover {
+        transform: none;
+    }
+
+
+    .site-dropdown-menu a span {
+        width: 28px;
+        height: 28px;
+    }
+
+}
+
+
+/* =========================================================
+   KISEBB TELEFON
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .site-header-inner {
+        width: calc(100% - 24px);
+        min-height: 68px;
+    }
+
+    .site-navigation {
+        top: 68px;
+
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    .site-logo {
+        gap: 10px;
+    }
+
+    .site-logo-mark {
+        width: 42px;
+        height: 42px;
+
+        border-radius: 11px;
+
+        font-size: 12px;
+    }
+
+    .site-logo-text strong {
+        font-size: 12.5px;
+    }
+
+    .site-logo-text small {
+        margin-top: 3px;
+
+        font-size: 9.5px;
+    }
+
+    .site-menu-button {
+        width: 42px;
+        height: 42px;
+
+        font-size: 21px;
+    }
+
+}
+
+
+/* =========================================================
+   MOZGÁS CSÖKKENTÉSE
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .site-header *,
+    .site-header *::before,
+    .site-header *::after {
+        transition: none !important;
+        animation: none !important;
+    }
+
+}

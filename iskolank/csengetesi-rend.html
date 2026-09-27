@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Schedule</title>
+    <style>
+    /* ========================================================= PTE SZENT-GYÖRGYI CSENGETÉSI REND ========================================================= */ :root { --primary-color: #005baa; --primary-dark: #004582; --primary-light: #eaf4fc; --secondary-color: #3b82c4; --light-color: #f6f9fc; --white: #ffffff; --dark-color: #172033; --text-color: #334155; --muted-color: #64748b; --border-color: #e2e8f0; --accent-color: #eaf4fc; --border-radius: 16px; --box-shadow: 0 12px 35px rgba(15, 23, 42, 0.08); --box-shadow-hover: 0 20px 45px rgba(15, 23, 42, 0.12); --transition: all 0.25s ease; } /* ========================================================= ALAP ========================================================= */ * { margin: 0; padding: 0; box-sizing: border-box; } html { scroll-behavior: smooth; } body { min-height: 100vh; width: 100%; display: flex; flex-direction: column; background: linear-gradient( 180deg, #f8fbff 0%, #f3f7fb 100% ); color: var(--text-color); font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; } /* ========================================================= FŐ TARTALOM ========================================================= */ body > .tabs, body > .schedules-container { width: min(100% - 40px, 1100px); margin-left: auto; margin-right: auto; } /* ========================================================= TABS ========================================================= */ .tabs { display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 45px; margin-bottom: 28px; width: 100%; } /* ========================================================= TAB GOMB ========================================================= */ .tab-btn { position: relative; min-width: 175px; padding: 12px 22px; border: 1px solid #cbd5e1; border-radius: 11px; background: #ffffff; color: #475569; font-family: inherit; font-size: 14px; font-weight: 700; cursor: pointer; transition: background-color .2s ease, color .2s ease, border-color .2s ease, box-shadow .2s ease, transform .2s ease; } .tab-btn:hover { border-color: #9fc5e5; background: #f1f7fd; color: var(--primary-color); transform: translateY(-1px); } .tab-btn.active { border-color: var(--primary-color); background: linear-gradient( 135deg, #0068ba, #00529e ); color: #ffffff; box-shadow: 0 8px 20px rgba(0, 91, 170, .20); } .tab-btn.active:hover { color: #ffffff; background: linear-gradient( 135deg, #0068ba, #00529e ); transform: translateY(-1px); } /* ========================================================= CSENGETÉSI REND KONTÉNER ========================================================= */ .schedules-container { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 30px; width: 100%; padding-bottom: 60px; } /* ========================================================= CSENGETÉSI KÁRTYA ========================================================= */ .schedule-card { display: none; width: min(100%, 900px); margin: 0 auto; overflow: hidden; background: var(--white); border: 1px solid rgba(226, 232, 240, .9); border-radius: var(--border-radius); box-shadow: var(--box-shadow); transform: translateY(0); transition: box-shadow .25s ease, transform .25s ease; } .schedule-card.active { display: block; } .schedule-card:hover { transform: translateY(-3px); box-shadow: var(--box-shadow-hover); } /* ========================================================= KÁRTYA FEJLÉC ========================================================= */ .card-header { position: relative; padding: 25px 30px; overflow: hidden; text-align: center; background: linear-gradient( 135deg, #005baa 0%, #004b8d 100% ); color: #ffffff; } .card-header::before { content: ""; position: absolute; width: 180px; height: 180px; top: -100px; right: -50px; border-radius: 50%; background: rgba(255, 255, 255, .06); } .card-header::after { content: ""; position: absolute; width: 120px; height: 120px; bottom: -80px; left: -40px; border-radius: 50%; background: rgba(255, 255, 255, .05); } .card-header h2 { position: relative; z-index: 2; margin-bottom: 4px; color: #ffffff; font-size: 22px; font-weight: 750; letter-spacing: -.3px; } .card-header p { position: relative; z-index: 2; color: rgba(255, 255, 255, .78); font-size: 13px; } /* ========================================================= TÁBLÁZAT ========================================================= */ .schedule-table { width: 100%; border-collapse: collapse; background: #ffffff; } .schedule-table tr { transition: background-color .2s ease; } .schedule-table tbody tr:not(.lunch-break):hover { background: #f8fbff; } .schedule-table th, .schedule-table td { padding: 14px 18px; text-align: center; border-bottom: 1px solid #edf1f5; } .schedule-table th { background: #f1f7fd; color: var(--primary-color); font-size: 13px; font-weight: 750; text-transform: uppercase; letter-spacing: .3px; } .schedule-table td { color: var(--text-color); font-size: 14px; } .schedule-table tbody tr:last-child td { border-bottom: none; } /* ========================================================= ÓRA SZÁMA ========================================================= */ .period { color: var(--primary-color) !important; font-size: 14px !important; font-weight: 750 !important; } /* ========================================================= IDŐ ========================================================= */ .time { color: #334155; font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace; font-size: 14px; font-weight: 600; letter-spacing: .2px; } /* ========================================================= EBÉDSZÜNET ========================================================= */ .lunch-break { background: linear-gradient( 90deg, #edf7ff, #e6f2fc, #edf7ff ) !important; color: var(--primary-color) !important; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; } .lunch-break td { padding: 12px 15px; border-bottom: 1px solid #dcecf8; } /* ========================================================= MOBIL ========================================================= */ @media (max-width: 768px) { body > .tabs, body > .schedules-container { width: calc(100% - 30px); } .tabs { margin-top: 30px; margin-bottom: 22px; gap: 8px; } .tab-btn { min-width: 0; flex: 1; padding: 11px 10px; font-size: 13px; } .schedules-container { width: 100%; padding-bottom: 40px; } .schedule-card { width: 100%; border-radius: 14px; } .card-header { padding: 21px 18px; } .card-header h2 { font-size: 19px; } .card-header p { font-size: 12px; } .schedule-table th, .schedule-table td { padding: 11px 8px; } .schedule-table th { font-size: 11px; } .schedule-table td { font-size: 13px; } .period { font-size: 13px !important; } .time { font-size: 12px; } } /* ========================================================= KIS TELEFON ========================================================= */ @media (max-width: 480px) { body > .tabs, body > .schedules-container { width: calc(100% - 20px); } .tabs { flex-direction: column; align-items: stretch; width: 100%; margin-top: 22px; } .tab-btn { width: 100%; } .schedule-card { border-radius: 12px; } .card-header { padding: 18px 14px; } .card-header h2 { font-size: 17px; } .schedule-table th, .schedule-table td { padding: 10px 5px; } .schedule-table th { font-size: 10px; } .schedule-table td { font-size: 12px; } .period { font-size: 12px !important; } .time { font-size: 11px; } } /* ========================================================= KISEGÍTŐ / ANIMÁCIÓ ========================================================= */ button:focus-visible { outline: 3px solid rgba(0, 91, 170, .25); outline-offset: 2px; } @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; animation: none !important; } }
+    </style>
+    <link rel="stylesheet" href="iskolank.css">
+</head>
+<body>
+
+<header class="site-header">
+    <div class="site-header-inner">
+
+        <a href="../index.html" class="site-logo">
+            <span class="site-logo-mark">PTE</span>
+            <span class="site-logo-text">
+                <strong>Szent-Györgyi</strong>
+                <small>Albert Egészségügyi Technikum</small>
+            </span>
+        </a>
+
+        <button class="site-menu-button" id="siteMenuButton" type="button" aria-label="Menü megnyitása">
+            ☰
+        </button>
+
+        <nav class="site-navigation" id="siteNavigation">
+
+            <div class="site-nav-dropdown">
+
+                <button
+                    class="site-nav-dropdown-button"
+                    id="schoolMenuButton"
+                    type="button"
+                    aria-expanded="false"
+                >
+                    Iskolánk
+                    <span class="site-dropdown-arrow">▾</span>
+                </button>
+
+                <div class="site-dropdown-menu" id="schoolDropdown">
+
+                    <a href="intezmenyunk.html">
+                        <span>01</span>
+                        Az intézményről
+                    </a>
+
+                    <a href="kapcsolat-ugyfelfogadas.html">
+                        <span>02</span>
+                        Kapcsolat, ügyfélfogadás
+                    </a>
+
+                    <a href="munkatarsaink.html">
+                        <span>03</span>
+                        Munkatársaink
+                    </a>
+
+                    <a href="osztalyaink.html">
+                        <span>04</span>
+                        Osztályaink
+                    </a>
+
+
+                    <a href="buszkesegeink.html">
+                        <span>05</span>
+                        Büszkeségeink
+                    </a>
+
+                    <a href="partnereink.html">
+                        <span>06</span>
+                        Partnereink
+                    </a>
+
+                    <a href="csengetesi-rend.html">
+                        <span>07</span>
+                        Csengetési rend
+                    </a>
+
+                </div>
+            </div>
+
+            <a href="../kepzesek.html">Képzések</a>
+            <a href="../felveteli.html">Felvételi</a>
+            <a href="../hirek.html">Hírek</a>
+            <a href="../dokumentumok.html">Dokumentumok</a>
+            <a href="../kapcsolat.html">Kapcsolat</a>
+
+        </nav>
+    </div>
+</header>
+
+  
+        <div class="tabs">
+            <button class="tab-btn active" onclick="showSchedule('regular')">Normál órarend</button>
+            <button class="tab-btn" onclick="showSchedule('short')">Rövidített órák</button>
+        </div>
+        
+        <div class="schedules-container">
+            <div id="regular" class="schedule-card active">
+                <div class="card-header">
+                    <h2>Normál tanítási nap</h2>
+                    <p>45 perces órák</p>
+                </div>
+                <table class="schedule-table">
+                    <thead>
+                        <tr>
+                            <th>Óra</th>
+                            <th>Időtartam</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="period">0. óra</td>
+                            <td class="time">7:00 – 7:40</td>
+                        </tr>
+                        <tr>
+                            <td class="period">1. óra</td>
+                            <td class="time">7:45 – 8:30</td>
+                        </tr>
+                        <tr>
+                            <td class="period">2. óra</td>
+                            <td class="time">8:40 – 9:25</td>
+                        </tr>
+                        <tr>
+                            <td class="period">3. óra</td>
+                            <td class="time">9:35 – 10:20</td>
+                        </tr>
+                        <tr>
+                            <td class="period">4. óra</td>
+                            <td class="time">10:30 – 11:15</td>
+                        </tr>
+                        <tr>
+                            <td class="period">5. óra</td>
+                            <td class="time">11:25 – 12:10</td>
+                        </tr>
+                        <tr class="lunch-break">
+                            <td colspan="2">EBÉDSZÜNET</td>
+                        </tr>
+                        <tr>
+                            <td class="period">6. óra</td>
+                            <td class="time">12:30 – 13:15</td>
+                        </tr>
+                        <tr>
+                            <td class="period">7. óra</td>
+                            <td class="time">13:20 – 14:05</td>
+                        </tr>
+                        <tr>
+                            <td class="period">8. óra</td>
+                            <td class="time">14:10 – 14:55</td>
+                        </tr>
+                        <tr>
+                            <td class="period">9. óra</td>
+                            <td class="time">15:00 – 15:45</td>
+                        </tr>
+                        <tr>
+                            <td class="period">10. óra</td>
+                            <td class="time">15:50 – 16:35</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div id="short" class="schedule-card">
+                <div class="card-header">
+                    <h2>Rövidített tanítási nap</h2>
+                    <p>35 perces órák</p>
+                </div>
+                <table class="schedule-table">
+                    <thead>
+                        <tr>
+                            <th>Óra</th>
+                            <th>Időtartam</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="period">0. óra</td>
+                            <td class="time">7:10 – 7:40</td>
+                        </tr>
+                        <tr>
+                            <td class="period">1. óra</td>
+                            <td class="time">7:45 – 8:20</td>
+                        </tr>
+                        <tr>
+                            <td class="period">2. óra</td>
+                            <td class="time">8:30 – 9:05</td>
+                        </tr>
+                        <tr>
+                            <td class="period">3. óra</td>
+                            <td class="time">9:15 - 9:50</td>
+                        </tr>
+                        <tr>
+                            <td class="period">4. óra</td>
+                            <td class="time">10:00 - 10:35</td>
+                        </tr>
+                        <tr>
+                            <td class="period">5. óra</td>
+                            <td class="time">10:45 - 11:20</td>
+                        </tr>
+                        <tr>
+                            <td class="period">6. óra</td>
+                            <td class="time">11:30 - 12:05</td>
+                        </tr>
+                        <tr>
+                            <td class="period">7. óra</td>
+                            <td class="time">12:15 - 12:50</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    
+    <script>
+        function showSchedule(scheduleId) {
+            // Hide all schedules
+            document.querySelectorAll('.schedule-card').forEach(card => {
+                card.classList.remove('active');
+            });
+            
+            // Show selected schedule
+            document.getElementById(scheduleId).classList.add('active');
+            
+            // Update tab buttons
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Find the clicked button and make it active
+            event.currentTarget.classList.add('active');
+        }
+    </script>
+<script src="iskolank.js"></script>
+</body>
+</html>

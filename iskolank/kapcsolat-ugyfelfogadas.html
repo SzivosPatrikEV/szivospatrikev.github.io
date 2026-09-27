@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Kapcsolat, ügyfélfogadás | PTE Szent-Györgyi</title>
+
+    <link rel="stylesheet" href="iskolank.css">
+
+    <style>
+
+        .contact-page {
+            width: min(100% - 40px, 1100px);
+            margin: 0 auto;
+            padding: 70px 0 90px;
+        }
+
+        .contact-header {
+            margin-bottom: 35px;
+        }
+
+        .contact-label {
+            display: inline-block;
+            margin-bottom: 10px;
+
+            color: #005baa;
+
+            font-size: 12px;
+            font-weight: 800;
+
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .contact-header h1 {
+            margin: 0 0 12px;
+
+            color: #172033;
+
+            font-size: clamp(32px, 5vw, 48px);
+            line-height: 1.1;
+        }
+
+        .contact-header p {
+            max-width: 700px;
+
+            color: #64748b;
+
+            font-size: 16px;
+        }
+
+        .contact-card {
+            padding: 35px;
+
+            background: #ffffff;
+
+            border: 1px solid #e2e8f0;
+            border-radius: 18px;
+
+            box-shadow:
+                0 15px 40px rgba(15, 23, 42, 0.08);
+        }
+
+        .contact-card p {
+            margin: 0 0 15px;
+
+            color: #334155;
+
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        .contact-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .contact-card strong {
+            color: #172033;
+        }
+
+        .contact-card a {
+            color: #005baa;
+
+            text-decoration: none;
+
+            font-weight: 600;
+
+            transition: color .2s ease;
+        }
+
+        .contact-card a:hover {
+            color: #003f78;
+            text-decoration: underline;
+        }
+
+        .contact-divider {
+            height: 1px;
+
+            margin: 25px 0;
+
+            background: #e2e8f0;
+        }
+
+        .contact-social {
+            margin-top: 30px;
+            padding: 22px;
+
+            background: #f1f7fd;
+
+            border-radius: 14px;
+
+            color: #334155;
+        }
+
+        .contact-social p {
+            margin: 0;
+        }
+
+        .contact-social strong {
+            color: #005baa;
+        }
+
+
+        @media (max-width: 600px) {
+
+            .contact-page {
+                width: calc(100% - 28px);
+                padding: 45px 0 60px;
+            }
+
+            .contact-card {
+                padding: 24px 20px;
+                border-radius: 14px;
+            }
+
+            .contact-card p {
+                font-size: 14px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+    <!-- =========================
+         HEADER
+    ========================= -->
+
+    <header class="site-header">
+
+        <div class="site-header-inner">
+
+            <a href="../index.html" class="site-logo">
+
+                <span class="site-logo-mark">
+                    PTE
+                </span>
+
+                <span class="site-logo-text">
+
+                    <strong>
+                        Szent-Györgyi
+                    </strong>
+
+                    <small>
+                        Albert Egészségügyi Technikum
+                    </small>
+
+                </span>
+
+            </a>
+
+
+            <button
+                class="site-menu-button"
+                id="siteMenuButton"
+                type="button"
+                aria-label="Menü megnyitása"
+            >
+                ☰
+            </button>
+
+
+            <nav
+                class="site-navigation"
+                id="siteNavigation"
+            >
+
+                <div class="site-nav-dropdown">
+
+                    <button
+                        class="site-nav-dropdown-button"
+                        id="schoolMenuButton"
+                        type="button"
+                        aria-expanded="false"
+                    >
+
+                        Iskolánk
+
+                        <span class="site-dropdown-arrow">
+                            ▾
+                        </span>
+
+                    </button>
+
+
+                    <div
+                        class="site-dropdown-menu"
+                        id="schoolDropdown"
+                    >
+
+                    <a href="intezmenyunk.html">
+                        <span>01</span>
+                        Az intézményről
+                    </a>
+
+                    <a href="kapcsolat-ugyfelfogadas.html">
+                        <span>02</span>
+                        Kapcsolat, ügyfélfogadás
+                    </a>
+
+                    <a href="munkatarsaink.html">
+                        <span>03</span>
+                        Munkatársaink
+                    </a>
+
+                    <a href="osztalyaink.html">
+                        <span>04</span>
+                        Osztályaink
+                    </a>
+
+
+                    <a href="buszkesegeink.html">
+                        <span>05</span>
+                        Büszkeségeink
+                    </a>
+
+                    <a href="partnereink.html">
+                        <span>06</span>
+                        Partnereink
+                    </a>
+
+                    <a href="csengetesi-rend.html">
+                        <span>07</span>
+                        Csengetési rend
+                    </a>
+
+                    </div>
+
+                </div>
+
+
+                <a href="../kepzesek.html">
+                    Képzések
+                </a>
+
+                <a href="../felveteli.html">
+                    Felvételi
+                </a>
+
+                <a href="../hirek.html">
+                    Hírek
+                </a>
+
+                <a href="../dokumentumok.html">
+                    Dokumentumok
+                </a>
+
+                <a href="../kapcsolat.html">
+                    Kapcsolat
+                </a>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================
+         TARTALOM
+    ========================= -->
+
+    <main class="contact-page">
+
+        <div class="contact-header">
+
+            <span class="contact-label">
+                KAPCSOLAT
+            </span>
+
+            <h1>
+                Kapcsolat, ügyfélfogadás
+            </h1>
+
+            <p>
+                Iskolánk elérhetőségei és az ügyfélfogadással
+                kapcsolatos információk.
+            </p>
+
+        </div>
+
+
+        <div class="contact-card">
+
+            <p>
+                <strong>
+                    Pécsi Tudományegyetem
+                </strong>
+            </p>
+
+            <p>
+                <strong>
+                    Szent-Györgyi Albert Egészségügyi Technikum
+                    és Szakképző Iskola
+                </strong>
+            </p>
+
+            <div class="contact-divider"></div>
+
+
+            <p>
+                <strong>Fenntartó:</strong>
+                Pécsi Tudományegyetem
+            </p>
+
+            <p>
+                <strong>OM azonosító:</strong>
+                910004
+            </p>
+
+            <p>
+                <strong>Cím:</strong>
+                9700 Szombathely, Jókai M. utca 14.
+            </p>
+
+            <p>
+                <strong>E-mail:</strong>
+                <a href="mailto:szentgyorgyi.szombathely@pte.hu">
+                    szentgyorgyi.szombathely@pte.hu
+                </a>
+            </p>
+
+            <p>
+                <strong>Telefon:</strong>
+                +36 94/311-170/145-ös mellék
+            </p>
+
+            <p>
+                <strong>Telefon:</strong>
+                +36 30/357-41-57
+            </p>
+
+            <p>
+                <strong>Weboldal:</strong>
+                <a
+                    href="http://pteszgy.pte.hu/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    http://pteszgy.pte.hu/
+                </a>
+            </p>
+
+            <p>
+                <strong>Facebook oldal:</strong>
+                <a
+                    href="http://www.facebook.com/pteszgy.szhely"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    facebook.com/pteszgy.szhely
+                </a>
+            </p>
+
+            <p>
+                <strong>Instagram:</strong>
+                <a
+                    href="http://www.instagram.com/pteszgy.szhely/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    pteszgy.szhely
+                </a>
+            </p>
+
+
+            <div class="contact-divider"></div>
+
+
+            <div class="contact-social">
+
+                <p>
+                    <strong>
+                        Ügyfélfogadás:
+                    </strong>
+
+                    munkanapokon 8:00-15:30
+                </p>
+
+            </div>
+
+
+            <div class="contact-social">
+
+                <p>
+                    <strong>
+                        Az iskolánkkal kapcsolatos Instagram
+                        bejegyzések
+                    </strong>
+                    megtekintéséhez
+
+                    <a
+                        href="https://www.instagram.com/explore/locations/566887026669461/pte-szent-gyorgyi-albert-egeszsegugyi-technikum-es-szakkepzo-iskola/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        kattintson ide!
+                    </a>
+                </p>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <script src="iskolank.js"></script>
+
+</body>
+
+</html>
